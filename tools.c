@@ -660,6 +660,26 @@ void TTIDY(void **jimlad,int length)
 
 
 /*#############################################################*/
+/*find median point*/
+
+float singleMedian(float *jimlad,int numb)
+{
+  float median=0;
+  int compFloat(const void *x,const void *y);  /*function needed by qsort()*/
+
+  qsort(jimlad,numb,sizeof(float),compFloat);  /*put the contents of temp in order*/
+  if(numb>0){
+    median=jimlad[(int)(numb/2)];
+  }else{
+    fprintf(stderr,"No data points for median?\n");
+    exit(1);
+  }
+
+  return(median);
+}/*singleMedian*/
+
+
+/*#############################################################*/
 /*A median filter for floats*/
 
 float *medianFloat(float *jimlad,int width,int length)
@@ -699,7 +719,6 @@ float *medianFloat(float *jimlad,int width,int length)
   TIDY(temp);
   return(filtered);
 }/*medianFloat*/
-
 
 
 /*#############################################################*/
