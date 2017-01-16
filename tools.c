@@ -520,6 +520,27 @@ int *markIntOld(int length,int *jimlad,int new)
 /*###################################################################*/
 /*add one integer to the end of an array of integers more efficiently*/
 
+uint32_t *markUint32(int length,uint32_t *jimlad,uint32_t new)
+{
+  if(length>0){
+    if(!(jimlad=(uint32_t *)realloc(jimlad,(length+1)*sizeof(uint32_t)))){
+      fprintf(stderr,"Balls\n");
+      exit(1);
+    }
+  }else{
+    if(!(jimlad=(uint32_t *)calloc(length+1,sizeof(uint32_t)))){
+      fprintf(stderr,"error tls allocation.\n");
+      exit(1);
+    }
+  }
+  jimlad[length]=new;
+  return(jimlad);
+}/*markUint32*/
+
+
+/*###################################################################*/
+/*add one integer to the end of an array of integers more efficiently*/
+
 float *markFloat(int length,float *jimlad,float new)
 {
   if(length>0){
