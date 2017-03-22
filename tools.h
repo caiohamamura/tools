@@ -11,6 +11,7 @@ float *floSwap(float *,int);
 long int *lintSwap(long int *,int);
 double *doSwap(double *,int);
 double doOneSwap(double);
+int16_t *int16Swap(int16_t *,int);
 double gaussian(double,double,double);
 double logNormal(double,double,double);
 char *markChar(int,char *,char);

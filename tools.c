@@ -28,6 +28,10 @@ typedef union{
   char buff[sizeof(long int)];
   long int x;
 }lintBuff; /*long integers*/
+typedef union{
+  char buff[sizeof(int16_t)];
+  int16_t x;
+}int16Buff;  /*int16_t*/
 
 
 /*#########################################################################*/
@@ -252,6 +256,46 @@ double *doSwap(double *bytes,int numb)
 
   return(buff);
 }
+
+
+/*##############################################################################*/
+/*byte swap arrays of int16_t*/
+
+int16_t *int16Swap(int16_t *bytes,int numb)
+{
+  int j=0;
+  register int nBytes=sizeof(int16_t),i=0;
+  int16Buff *ibuff=NULL,*obuff=NULL;
+  int16_t *buff=NULL;   /*the pointer to pass back*/
+
+  if(numb<1)return(buff);
+
+  if(!(ibuff=(int16Buff *)calloc(numb,sizeof(int16Buff)))){
+    fprintf(stderr,"error in double buffer allocation.\n");
+    exit(1);
+  }
+  if(!(obuff=(int16Buff *)calloc(numb,sizeof(int16Buff)))){
+    fprintf(stderr,"error in double buffer allocation.\n");
+    exit(1);
+  }
+  if(!(buff=(int16_t *)calloc(numb,sizeof(int16_t)))){
+    fprintf(stderr,"error in output buffer allocation.\n");
+    exit(1);
+  }
+  for(j=0;j<numb;j++){
+    ibuff[j].x=bytes[j];
+    for(i=0;i<nBytes;i++){
+      obuff[j].buff[i]=ibuff[j].buff[nBytes-1-i];
+    }
+    buff[j]=obuff[j].x;
+  }
+  TIDY(ibuff);
+  TIDY(obuff);
+  TIDY(bytes);
+
+  return(buff);
+}/*int16Swap*/
+
 
 /*############################################################################*/
 /*Byte swap a single double*/
