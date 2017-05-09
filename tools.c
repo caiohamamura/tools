@@ -109,9 +109,9 @@ double logNormal(double x,double sigma,double offset)
 /*#########################################################*/
 /*byte swap floats, if big endian*/
 
-float *floSwap(float *bytes,int numb)
+float *floSwap(float *bytes,uint64_t numb)
 {
-  int j=0;
+  uint64_t j=0;
   register int nBytes=sizeof(float),i=0;
   floBuff *ibuff=NULL,*obuff=NULL;
   float *buff=NULL;   /*the pointer to pass back*/
@@ -146,9 +146,9 @@ float *floSwap(float *bytes,int numb)
 /*##############################################################################*/
 /*byte swap integers, if big endian*/
 
-int *intSwap(int *bytes,int numb)
+int *intSwap(int *bytes,uint64_t numb)
 {
-  int j=0;
+  uint64_t j=0;
   register int nBytes=sizeof(int),i=0;
   intBuff *iibuff=NULL,*oibuff=NULL;
   int *buff=NULL;   /*the pointer to pass back*/
@@ -182,12 +182,53 @@ int *intSwap(int *bytes,int numb)
   return(buff);
 }
 
+
+/*##############################################################################*/
+/*byte swap uint64_t, if big endian*/
+
+uint64_t *uint64Swap(uint64_t *bytes,uint64_t numb)
+{
+  uint64_t j=0;
+  register int nBytes=sizeof(uint64_t),i=0;
+  intBuff *iibuff=NULL,*oibuff=NULL;
+  uint64_t *buff=NULL;   /*the pointer to pass back*/
+
+  if(!bytes){printf("Something is wrong\n");exit(1);}
+
+  if(numb<1)return(buff);
+
+  if(!(iibuff=(intBuff *)calloc(numb,sizeof(intBuff)))){
+    fprintf(stderr,"error in int buffer allocation.\n");
+    exit(1);
+  }
+  if(!(oibuff=(intBuff *)calloc(numb,sizeof(intBuff)))){
+    fprintf(stderr,"error in int buffer allocation.\n");
+    exit(1);
+  }
+  if(!(buff=(uint64_t *)calloc(numb,sizeof(uint64_t)))){
+    fprintf(stderr,"error in output buffer allocation.\n");
+    exit(1);
+  }
+  for(j=0;j<numb;j++){
+    iibuff[j].x=bytes[j];
+    for(i=0;i<nBytes;i++){
+      oibuff[j].buff[i]=iibuff[j].buff[nBytes-1-i];
+    }
+    buff[j]=oibuff[j].x;
+  }
+  TIDY(iibuff);
+  TIDY(oibuff);
+  TIDY(bytes);
+  return(buff);
+}
+
+
 /*############################################################################*/
 /*byte swap long integers*/
 
-long int *lintSwap(long int *bytes,int numb)
+long int *lintSwap(long int *bytes,uint64_t numb)
 {
-  int j=0;
+  uint64_t j=0;
   register int nBytes=sizeof(long int),i=0;
   lintBuff *iibuff=NULL,*oibuff=NULL;
   long int *buff=NULL;   /*the pointer to pass back*/
@@ -222,9 +263,9 @@ long int *lintSwap(long int *bytes,int numb)
 /*##############################################################################*/
 /*byte swap arrays of doubles*/
 
-double *doSwap(double *bytes,int numb)
+double *doSwap(double *bytes,uint64_t numb)
 {
-  int j=0;
+  uint64_t j=0;
   register int nBytes=sizeof(double),i=0;
   doBuff *ibuff=NULL,*obuff=NULL;
   double *buff=NULL;   /*the pointer to pass back*/
@@ -261,9 +302,9 @@ double *doSwap(double *bytes,int numb)
 /*##############################################################################*/
 /*byte swap arrays of int16_t*/
 
-int16_t *int16Swap(int16_t *bytes,int numb)
+int16_t *int16Swap(int16_t *bytes,uint64_t numb)
 {
-  int j=0;
+  uint64_t j=0;
   register int nBytes=sizeof(int16_t),i=0;
   int16Buff *ibuff=NULL,*obuff=NULL;
   int16_t *buff=NULL;   /*the pointer to pass back*/
