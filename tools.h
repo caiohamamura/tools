@@ -13,6 +13,7 @@ long int *lintSwap(long int *,uint64_t);
 double *doSwap(double *,uint64_t);
 double doOneSwap(double);
 float floOneSwap(float);
+uint32_t u32OneSwap(uint32_t);
 int16_t *int16Swap(int16_t *,uint64_t);
 double gaussian(double,double,double);
 double logNormal(double,double,double);
