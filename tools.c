@@ -32,6 +32,10 @@ typedef union{
   char buff[sizeof(int16_t)];
   int16_t x;
 }int16Buff;  /*int16_t*/
+typedef union{
+  char buff[sizeof(uint32_t)];
+  uint32_t x;
+}u32Buff;    /*uint32_t*/
 
 
 /*#########################################################################*/
@@ -336,6 +340,24 @@ int16_t *int16Swap(int16_t *bytes,uint64_t numb)
 
   return(buff);
 }/*int16Swap*/
+
+
+/*############################################################################*/
+/*Byte swap a single double*/
+
+uint32_t u32OneSwap(uint32_t bytes)
+{
+  register int nBytes=sizeof(uint32_t),i=0;
+  u32Buff ibuff,obuff;
+  uint32_t buff;   /*the pointer to pass back*/
+
+  ibuff.x=bytes;
+  for(i=0;i<nBytes;i++){
+    obuff.buff[i]=ibuff.buff[nBytes-1-i];
+  }
+  buff=obuff.x;
+  return(buff);
+}
 
 
 /*############################################################################*/
