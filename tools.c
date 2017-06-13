@@ -355,6 +355,24 @@ double doOneSwap(double bytes)
   return(buff);
 }
 
+/*############################################################################*/
+/*Byte swap a single float*/
+
+float floOneSwap(float bytes)
+{
+  register int nBytes=sizeof(float),i=0;
+  floBuff ibuff,obuff;
+  float buff;   /*the pointer to pass back*/
+
+  ibuff.x=bytes;
+  for(i=0;i<nBytes;i++){
+    obuff.buff[i]=ibuff.buff[nBytes-1-i];
+  }
+  buff=obuff.x;
+  return(buff);
+}
+
+
 /*######################################################################*/
 /*To measure byte order and set swapping control*/
 /*stolen from T Quaife's check_endian in 2006*/
