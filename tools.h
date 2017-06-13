@@ -2,8 +2,8 @@
 
 double *dalloc(int,char *,int);
 float *falloc(int,char *,int);
-char *challoc(int,char *,int);
-unsigned char *uchalloc(int,char *,int);
+char *challoc(uint64_t,char *,int);
+unsigned char *uchalloc(uint64_t,char *,int);
 int *ialloc(int,char *,int);
 short int *shalloc(int,char *,int);
 int *intSwap(int *,uint64_t);
