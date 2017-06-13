@@ -467,12 +467,12 @@ int *ialloc(int length,char *namen,int n)
 /*#########################################################################*/
 /*allocate a char arrays, checking for errors*/
 
-char *challoc(int length,char *namen,int n)
+char *challoc(uint64_t length,char *namen,int n)
 {
   char *jimlad=NULL;
   if(!(jimlad=(char *)calloc(length,sizeof(char)))){
     fprintf(stderr,"error in %s array allocation %d\n",namen,n);
-    fprintf(stderr,"allocating %d\n",length);
+    fprintf(stderr,"allocating %llu\n",length);
     exit(1);
   }
   return(jimlad);
@@ -482,12 +482,12 @@ char *challoc(int length,char *namen,int n)
 /*#########################################################################*/
 /*allocate an unsigned char arrays, checking for errors*/
 
-unsigned char *uchalloc(int length,char *namen,int n)
+unsigned char *uchalloc(uint64_t length,char *namen,int n)
 {
   unsigned char *jimlad=NULL;
   if(!(jimlad=(unsigned char *)calloc(length,sizeof(unsigned char)))){
     fprintf(stderr,"error in %s array allocation %d\n",namen,n);
-    fprintf(stderr,"allocating %d\n",length);
+    fprintf(stderr,"allocating %llu\n",length);
     exit(1);
   }
   return(jimlad);
@@ -720,7 +720,7 @@ char *markChar(int length,char *jimlad,char new)
       fprintf(stderr,"Balls\n");
       exit(1);
     }
-  }else jimlad=challoc(length+1,"int",0);
+  }else jimlad=challoc((uint64_t)length+1,"int",0);
   jimlad[length]=new;
   return(jimlad);
 }/*markChar*/
@@ -735,7 +735,7 @@ unsigned char *markUchar(int length,unsigned char *jimlad,unsigned char new)
       fprintf(stderr,"Balls\n");
       exit(1);
     }
-  }else jimlad=uchalloc(length+1,"int",0);
+  }else jimlad=uchalloc((uint64_t)length+1,"int",0);
   jimlad[length]=new;
   return(jimlad);
 }/*markChar*/
@@ -882,8 +882,8 @@ unsigned char *medianUchar(unsigned char *jimlad,int width,int length)
     exit(1);
   }
 
-  filtered=uchalloc(length,"median filter",0);
-  temp=uchalloc(width,"temporary median",0);
+  filtered=uchalloc((uint64_t)length,"median filter",0);
+  temp=uchalloc((uint64_t)width,"temporary median",0);
 
   halfLength=width/2;
   for(i=0;i<length;i++){
