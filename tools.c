@@ -472,7 +472,7 @@ char *challoc(uint64_t length,char *namen,int n)
   char *jimlad=NULL;
   if(!(jimlad=(char *)calloc(length,sizeof(char)))){
     fprintf(stderr,"error in %s array allocation %d\n",namen,n);
-    fprintf(stderr,"allocating %llu\n",length);
+    fprintf(stderr,"allocating %lu\n",length);
     exit(1);
   }
   return(jimlad);
@@ -487,7 +487,7 @@ unsigned char *uchalloc(uint64_t length,char *namen,int n)
   unsigned char *jimlad=NULL;
   if(!(jimlad=(unsigned char *)calloc(length,sizeof(unsigned char)))){
     fprintf(stderr,"error in %s array allocation %d\n",namen,n);
-    fprintf(stderr,"allocating %llu\n",length);
+    fprintf(stderr,"allocating %lu\n",length);
     exit(1);
   }
   return(jimlad);
