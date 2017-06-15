@@ -801,7 +801,7 @@ void TTIDY(void **jimlad,int length)
     free(jimlad);
     jimlad=NULL;
   }
-
+  return;
 }/*TTIDY*/
 
 
