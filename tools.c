@@ -836,7 +836,7 @@ float *medianFloat(float *jimlad,int width,int length)
   int compFloat(const void *x,const void *y);  /*function needed by qsort()*/
 
   if(width<3){
-    fprintf(stderr,"Median filter won;t work with a width of %d\n",width);
+    fprintf(stderr,"Median filter won't work with a width of %d for float\n",width);
     exit(1);
   }
 
@@ -878,7 +878,7 @@ unsigned char *medianUchar(unsigned char *jimlad,int width,int length)
   int compUchar(const void *x,const void *y);  /*function needed by qsort()*/
 
   if(width<3){
-    fprintf(stderr,"Median filter won;t work with a width of %d\n",width);
+    fprintf(stderr,"Median filter won't work with a width of %d for uchar\n",width);
     exit(1);
   }
 
@@ -920,7 +920,7 @@ double *medianDouble(double *jimlad,int width,int length)
   int comp(const void *x,const void *y);  /*function needed by qsort()*/
 
   if(width<3){
-    fprintf(stderr,"Median filter won;t work with a width of %d\n",width);
+    fprintf(stderr,"Median filter won't work with a width of %d for double\n",width);
     exit(1);
   }
 
