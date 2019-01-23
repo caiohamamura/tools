@@ -617,7 +617,7 @@ int *markInt(int length,int *jimlad,int new)
 {
   if(length>0){
     if(!(jimlad=(int *)realloc(jimlad,(length+1)*sizeof(int)))){
-      fprintf(stderr,"Error in int reallocation, allocaing %lu\n",(length+1)*sizeof(int));
+      fprintf(stderr,"Error in int reallocation within markInt, allocaing %lu\n",(length+1)*sizeof(int));
       exit(1);
     }
   }else jimlad=ialloc(length+1,"int",0);
