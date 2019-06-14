@@ -1,7 +1,7 @@
 #define TIDY(arr) if((arr)){free((arr));(arr)=NULL;}  /*free an array*/
 
 double *dalloc(int,char *,int);
-float *falloc(int,char *,int);
+float *falloc(uint64_t,char *,int);
 char *challoc(uint64_t,char *,int);
 unsigned char *uchalloc(uint64_t,char *,int);
 int *ialloc(int,char *,int);

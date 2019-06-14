@@ -497,7 +497,7 @@ unsigned char *uchalloc(uint64_t length,char *namen,int n)
 /*########################################################################*/
 /*allocate a float array, checking for errors*/
 
-float *falloc(int length,char *namen,int n)
+float *falloc(uint64_t length,char *namen,int n)
 {
   float *jimlad=NULL;
   if(!(jimlad=(float *)calloc(length,sizeof(float)))){
@@ -520,7 +520,7 @@ short int *shalloc(int length,char *namen,int n)
     exit(1);
   }
   return(jimlad);
-}/*falloc*/
+}/*shalloc*/
 
 /*#########################################################################*/
 /*allocate an array of int arrays, checking for errors*/
@@ -578,7 +578,7 @@ float **fFalloc(int length,char *namen,int n)
     exit(1);
   }
   return(jimlad);
-}/*falloc*/
+}/*fFalloc*/
 
 /*########################################################################*/
 /*allocate a pointer to an array of double pointers, checking for errors*/
@@ -592,7 +592,7 @@ double **dDalloc(int length,char *namen,int n)
     exit(1);
   }
   return(jimlad);
-}/*falloc*/
+}/*dDalloc*/
 
 
 /*#########################################################################*/
@@ -673,7 +673,7 @@ float *markFloat(int length,float *jimlad,float new)
       fprintf(stderr,"Error in float reallocation, %lu\n",(length+1)*sizeof(float));
       exit(1);
     }
-  }else        jimlad=falloc(length+1,"int",0);
+  }else        jimlad=falloc((uint64_t)length+1,"int",0);
   jimlad[length]=new;
   return(jimlad);
 }/*markFloat*/
@@ -687,7 +687,7 @@ float *markFloatOld(int length,float *jimlad,float new)
   int i=0;
   float *temparr=NULL;
 
-  temparr=falloc(length+1,"integer transfer",length);
+  temparr=falloc((uint64_t)length+1,"integer transfer",length);
   for(i=0;i<length;i++)temparr[i]=jimlad[i];
   temparr[length]=new;
   TIDY(jimlad);
@@ -750,7 +750,7 @@ float *deleteFloat(int length,float *jimlad,int point)
   int i=0,k=0;
   float *temparr=NULL;
 
-  temparr=falloc(length-1,"float deletion",point);
+  temparr=falloc((uint64_t)length-1,"float deletion",point);
   for(i=0;i<length;i++){
     if(i!=point)temparr[k++]=jimlad[i];
   }
@@ -840,8 +840,8 @@ float *medianFloat(float *jimlad,int width,int length)
     exit(1);
   }
 
-  filtered=falloc(length,"median filter",0);
-  temp=falloc(width,"temporary median",0);
+  filtered=falloc((uint64_t)length,"median filter",0);
+  temp=falloc((uint64_t)width,"temporary median",0);
 
   halfLength=width/2;
   for(i=0;i<length;i++){
