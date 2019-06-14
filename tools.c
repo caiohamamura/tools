@@ -502,7 +502,7 @@ float *falloc(uint64_t length,char *namen,int n)
   float *jimlad=NULL;
   if(!(jimlad=(float *)calloc(length,sizeof(float)))){
     fprintf(stderr,"error in %s array allocation %d\n",namen,n);
-    fprintf(stderr,"allocating %d\n",length);
+    fprintf(stderr,"allocating %lu\n",length);
     exit(1);
   }
   return(jimlad);
