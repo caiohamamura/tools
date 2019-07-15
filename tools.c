@@ -57,6 +57,19 @@ void checkArguments(int numberOfArguments,int thisarg,int argc,char *option)
 
 
 /*#########################################################*/
+/*arccos*/
+
+double acos(double top,double bot)
+{
+  double theta=0;
+
+  theta=1.0/sqrt(pow(atan2(top,bot),2.0)+1.0);
+
+  return(theta);
+}/*acos*/
+
+
+/*#########################################################*/
 /*return y for a normailised Gaussian given other parameters*/
 
 double gaussian(double x,double sigma,double offset)
