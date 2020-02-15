@@ -4,12 +4,13 @@
 /*# non-specific things.    20th April 2007  #*/
 /*############################################*/
 
-/*#include <stdio.h>
+#include <stdio.h>
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
-#include "starat.h"
-#include "tools.h"*/
+#include <stdint.h>
+#include "tools.h"
+
 
 /*binary buffers*/    
 typedef union{
