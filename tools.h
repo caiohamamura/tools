@@ -1,3 +1,12 @@
+#pragma once
+
+#ifdef _WIN32
+	#define strncasecmp _strnicmp
+	#define strcasecmp _stricmp
+	#define fseeko _fseeki64
+	typedef long int off_t;
+#endif
+
 #define TIDY(arr) if((arr)){free((arr));(arr)=NULL;}  /*free an array*/
 
 double *dalloc(int,char *,int);
