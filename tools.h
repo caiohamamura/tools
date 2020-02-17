@@ -31,4 +31,6 @@ double **dDalloc(int,char *,int);
 void checkArguments(int,int,int,char *);
 void TTIDY(void **,int); 
 
+float singleMedian(float *,int);
+
 
