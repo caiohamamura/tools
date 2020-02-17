@@ -826,6 +826,7 @@ float singleMedian(float *jimlad,int numb)
     exit(1);
   }
 
+  TIDY(temp);
   return(median);
 }/*singleMedian*/
 
