@@ -28,6 +28,7 @@ double gaussian(double,double,double);
 double logNormal(double,double,double);
 char *markChar(int,char *,char);
 unsigned char *markUchar(int,unsigned char *,unsigned char);
+float singleMedian(float*, int);
 
 unsigned char **uchChalloc(int,char *,int);
 char **chChalloc(int,char *,int);
