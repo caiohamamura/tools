@@ -8,7 +8,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stdint.h>
+#include <inttypes.h>
 #include "tools.h"
 
 
@@ -473,7 +473,7 @@ char *challoc(uint64_t length,char *namen,int n)
   char *jimlad=NULL;
   if(!(jimlad=(char *)calloc(length,sizeof(char)))){
     fprintf(stderr,"error in %s array allocation %d\n",namen,n);
-    fprintf(stderr,"allocating %llu\n",(unsigned long long int)length);
+    fprintf(stderr,"allocating %" PRIu64 "\n",((uint64_t)length));
     exit(1);
   }
   return(jimlad);
@@ -488,7 +488,7 @@ unsigned char *uchalloc(uint64_t length,char *namen,int n)
   unsigned char *jimlad=NULL;
   if(!(jimlad=(unsigned char *)calloc(length,sizeof(unsigned char)))){
     fprintf(stderr,"error in %s array allocation %d\n",namen,n);
-    fprintf(stderr,"allocating %llu\n",(unsigned long long int)length);
+    fprintf(stderr,"allocating %" PRIu64 "\n",(uint64_t)length);
     exit(1);
   }
   return(jimlad);
@@ -503,7 +503,7 @@ float *falloc(uint64_t length,char *namen,int n)
   float *jimlad=NULL;
   if(!(jimlad=(float *)calloc(length,sizeof(float)))){
     fprintf(stderr,"error in %s array allocation %d\n",namen,n);
-    fprintf(stderr,"allocating %lu\n",length);
+    fprintf(stderr,"allocating %" PRIu64 "\n",length);
     exit(1);
   }
   return(jimlad);
@@ -618,7 +618,7 @@ int *markInt(int length,int *jimlad,int new)
 {
   if(length>0){
     if(!(jimlad=(int *)realloc(jimlad,(length+1)*sizeof(int)))){
-      fprintf(stderr,"Error in int reallocation within markInt, allocating %lu\n",(length+1)*sizeof(int));
+      fprintf(stderr,"Error in int reallocation within markInt, allocating %" PRIu64 "\n",(uint64_t)(length+1)*sizeof(int));
       exit(1);
     }
   }else jimlad=ialloc(length+1,"int",0);
@@ -650,7 +650,7 @@ uint32_t *markUint32(int length,uint32_t *jimlad,uint32_t new)
 {
   if(length>0){
     if(!(jimlad=(uint32_t *)realloc(jimlad,(length+1)*sizeof(uint32_t)))){
-      fprintf(stderr,"Error in uint32 reallocation, allocaing %lu\n",(length+1)*sizeof(uint32_t));
+      fprintf(stderr,"Error in uint32 reallocation, allocaing %" PRIu64 "\n",(uint64_t)(length+1)*sizeof(uint32_t));
       exit(1);
     }
   }else{
@@ -671,7 +671,7 @@ float *markFloat(int length,float *jimlad,float new)
 {
   if(length>0){
     if(!(jimlad=(float *)realloc(jimlad,(length+1)*sizeof(float)))){
-      fprintf(stderr,"Error in float reallocation, %lu\n",(length+1)*sizeof(float));
+      fprintf(stderr,"Error in float reallocation, %" PRIu64 "\n",(uint64_t)(length+1)*sizeof(float));
       exit(1);
     }
   }else        jimlad=falloc((uint64_t)length+1,"int",0);
@@ -703,7 +703,7 @@ double *markDo(int length,double *jimlad,double new)
 {
   if(length>0){
     if(!(jimlad=(double *)realloc(jimlad,(length+1)*sizeof(double)))){
-      fprintf(stderr,"Error in double reallocation %lu\n",(length+1)*sizeof(double));
+      fprintf(stderr,"Error in double reallocation %" PRIu64 "\n",(uint64_t)(length+1)*sizeof(double));
       exit(1);
     }
   }else        jimlad=dalloc(length+1,"int",0);
@@ -718,7 +718,7 @@ char *markChar(int length,char *jimlad,char new)
 {
   if(length>0){
     if(!(jimlad=(char*)realloc(jimlad,(length+1)*sizeof(char)))){
-      fprintf(stderr,"Error in char reallocation %lu\n",(length+1)*sizeof(char));
+      fprintf(stderr,"Error in char reallocation %" PRIu64 "\n",(uint64_t)(length+1)*sizeof(char));
       exit(1);
     }
   }else jimlad=challoc((uint64_t)length+1,"int",0);
@@ -733,7 +733,7 @@ unsigned char *markUchar(int length,unsigned char *jimlad,unsigned char new)
 {
   if(length>0){
     if(!(jimlad=(unsigned char *)realloc(jimlad,(length+1)*sizeof(unsigned char)))){
-      fprintf(stderr,"Error in uchar allocation, %lu\n",(length+1)*sizeof(unsigned char));
+      fprintf(stderr,"Error in uchar allocation, %" PRIu64 "\n",(uint64_t)(length+1)*sizeof(unsigned char));
       exit(1);
     }
   }else jimlad=uchalloc((uint64_t)length+1,"int",0);
