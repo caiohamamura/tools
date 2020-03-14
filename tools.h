@@ -10,16 +10,26 @@
 #define TIDY(arr) if((arr)){free((arr));(arr)=NULL;}  /*free an array*/
 
 /*Define macros for error handling*/
-#define ISINTRETINT(x) if((x==-1)) return((-1))
-#define ISINTRETNULL(x) if((x==-1)) return((NULL))
-#define ISNULLRETINT(x) if((x==NULL)) return((-1))
+#define ISINTRETINT(x)   if((x==-1)) return((-1))
+#define ISINTRETNULL(x)  if((x==-1)) return((NULL))
+#define ISINTRETFLT(x) if((x==-1)) return((-FLT_MAX))
+#define ISINTRETONE(x)   if((x==-1)) return((1))
+#define ISNULLRETINT(x)  if((x==NULL)) return((-1))
 #define ISNULLRETNULL(x) if((x==NULL)) return((NULL))
-#define NOT0RETNULL(x) if((x==-1)) return((NULL))
-#define NOT0RETINT(x) if((x==-1)) return((-1))
+#define ISNULLRETONE(x)   if((x==NULL)) return((1))
+#define NOT0RETNULL(x)   if((x==-1)) return((NULL))
+#define NOT0RETINT(x)    if((x==-1)) return((-1))
 #define ASSIGN_CHECKNULL_RETNULL(x,y) (x)=(y);if((x==NULL)) return(NULL)
 #define ASSIGN_CHECKNULL_RETINT(x,y) (x)=(y);if((x==NULL)) return(-1)
+#define ASSIGN_CHECKNULL_RETFLT(x,y) (x)=(y);if((x==NULL)) return(-FLT_MAX)
+#define ASSIGN_CHECKNULL_RETONE(x,y) (x)=(y);if((x==NULL)) return(1)
+#define ASSIGN_CHECKNULL_RETDBL(x,y) (x)=(y);if((x==NULL)) return(-DBL_MAX)
 #define ASSIGN_CHECKINT_RETNULL(x,y) (x)=(y);if((x==-1)) return(NULL)
-#define ASSIGN_CHECKINT_RETINT(x,y) (x)=(y);if((x==-1)) return(-1)
+#define ASSIGN_CHECKINT_RETINT(x,y)  (x)=(y);if((x==-1)) return(-1)
+#define ASSIGN_CHECKFLT_RETONE(x,y)  (x)=(y);if((x==-FLT_MAX)) return(1)
+#define ASSIGN_CHECKFLT_RETNULL(x,y) (x)=(y);if((x==-FLT_MAX)) return(NULL)
+#define ASSIGN_CHECKFLT_RETINT(x,y)  (x)=(y);if((x==-FLT_MAX)) return(-1)
+#define ASSIGN_CHECKDBL_RETINT(x,y)  (x)=(y);if((x==-DBL_MAX)) return(-1)
 
 double *dalloc(int,char *,int);
 float *falloc(uint64_t,char *,int);
@@ -50,7 +60,7 @@ short int **shIalloc(int,char *,int);
 double **dDalloc(int,char *,int);
 
 
-void checkArguments(int,int,int,char *);
+int checkArguments(int,int,int,char *);
 void TTIDY(void **,int); 
 
 
