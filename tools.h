@@ -9,6 +9,18 @@
 
 #define TIDY(arr) if((arr)){free((arr));(arr)=NULL;}  /*free an array*/
 
+/*Define macros for error handling*/
+#define ISINTRETINT(x) if((x==-1)) return((-1))
+#define ISINTRETNULL(x) if((x==-1)) return((NULL))
+#define ISNULLRETINT(x) if((x==NULL)) return((-1))
+#define ISNULLRETNULL(x) if((x==NULL)) return((NULL))
+#define NOT0RETNULL(x) if((x==-1)) return((NULL))
+#define NOT0RETINT(x) if((x==-1)) return((-1))
+#define ASSIGN_CHECKNULL_RETNULL(x,y) (x)=(y);if((x==NULL)) return(NULL)
+#define ASSIGN_CHECKNULL_RETINT(x,y) (x)=(y);if((x==NULL)) return(-1)
+#define ASSIGN_CHECKINT_RETNULL(x,y) (x)=(y);if((x==-1)) return(NULL)
+#define ASSIGN_CHECKINT_RETINT(x,y) (x)=(y);if((x==-1)) return(-1)
+
 double *dalloc(int,char *,int);
 float *falloc(uint64_t,char *,int);
 char *challoc(uint64_t,char *,int);
