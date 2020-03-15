@@ -4,8 +4,9 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-
-int fprintf2(FILE*, const char*, ...);
-int printf2(const char*, ...);
+int msgf(const char*, ...);
+int errorf(const char*, ...);
+float frand();
+void srand2(int);
 
 #endif /* HANCOCK_MSGHANDLING_H */
