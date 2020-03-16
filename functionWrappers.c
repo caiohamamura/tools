@@ -6,16 +6,18 @@
 
 int msgf(const char *format, ...) {
     va_list argptr;
+    int result;
     va_start(argptr, format);
-    int result = vfprintf(stdout, format, argptr);
+    result = vfprintf(stdout, format, argptr);
     va_end(argptr);
     return(result);
 }
 
 int errorf(const char *format, ...) {
     va_list argptr;
+    int result;
     va_start(argptr, format);
-    int result = vfprintf(stderr, format, argptr);
+    result = vfprintf(stderr, format, argptr);
     va_end(argptr);
     return(result);
 }
