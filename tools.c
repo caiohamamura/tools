@@ -624,7 +624,7 @@ int *markInt(int length,int *jimlad,int new)
       errorf("Error in int reallocation within markInt, allocating %" PRIu64 "\n",(uint64_t)(length+1)*sizeof(int));
       return(NULL);
     }
-  }else ASSIGN_CHECKNULL_RETNULL(jimlad,ialloc(length+1,"int",0));
+  }else{ASSIGN_CHECKNULL_RETNULL(jimlad,ialloc(length+1,"int",0));}
   jimlad[length]=new;
   return(jimlad);
 }/*markIntNew*/
@@ -677,7 +677,7 @@ float *markFloat(int length,float *jimlad,float new)
       errorf("Error in float reallocation, %" PRIu64 "\n",(uint64_t)(length+1)*sizeof(float));
       return(NULL);
     }
-  }else        ASSIGN_CHECKNULL_RETNULL(jimlad,falloc((uint64_t)length+1,"int",0));
+  }else{ASSIGN_CHECKNULL_RETNULL(jimlad,falloc((uint64_t)length+1,"int",0));}
   jimlad[length]=new;
   return(jimlad);
 }/*markFloat*/
@@ -709,7 +709,7 @@ double *markDo(int length,double *jimlad,double new)
       errorf("Error in double reallocation %" PRIu64 "\n",(uint64_t)(length+1)*sizeof(double));
       return(NULL);
     }
-  }else        ASSIGN_CHECKNULL_RETNULL(jimlad,dalloc(length+1,"int",0));
+  }else{ASSIGN_CHECKNULL_RETNULL(jimlad,dalloc(length+1,"int",0));}
   jimlad[length]=new;
   return(jimlad);
 }/*markDo*/
@@ -724,7 +724,7 @@ char *markChar(int length,char *jimlad,char new)
       errorf("Error in char reallocation %" PRIu64 "\n",(uint64_t)(length+1)*sizeof(char));
       return(NULL);
     }
-  }else ASSIGN_CHECKNULL_RETNULL(jimlad,challoc((uint64_t)length+1,"int",0));
+  }else{ASSIGN_CHECKNULL_RETNULL(jimlad,challoc((uint64_t)length+1,"int",0));}
   jimlad[length]=new;
   return(jimlad);
 }/*markChar*/
@@ -739,7 +739,7 @@ unsigned char *markUchar(int length,unsigned char *jimlad,unsigned char new)
       errorf("Error in uchar allocation, %" PRIu64 "\n",(uint64_t)(length+1)*sizeof(unsigned char));
       return(NULL);
     }
-  }else ASSIGN_CHECKNULL_RETNULL(jimlad,uchalloc((uint64_t)length+1,"int",0));
+  }else{ASSIGN_CHECKNULL_RETNULL(jimlad,uchalloc((uint64_t)length+1,"int",0));}
   jimlad[length]=new;
   return(jimlad);
 }/*markChar*/
