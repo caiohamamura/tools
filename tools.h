@@ -5,7 +5,6 @@
 	#define strncasecmp _strnicmp
 	#define strcasecmp _stricmp
 	#define fseeko _fseeki64
-    #define __iob_func __acrt_iob_func
 	typedef long int off_t;
 #endif
 
