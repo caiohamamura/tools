@@ -1,6 +1,9 @@
 #pragma once
 #include <float.h>
 
+#ifndef M_PI
+    #define M_PI 3.14159265358979323846
+#endif
 #ifdef _WIN32
 	#define strncasecmp _strnicmp
 	#define strcasecmp _stricmp
@@ -29,6 +32,7 @@
 #define ASSIGN_CHECKINT_RETINT(x,y)  (x)=(y);if((x!=0)) return(-1)
 #define ASSIGN_CHECKFLT_RETONE(x,y)  (x)=(y);if((x==-FLT_MAX)) return(1)
 #define ASSIGN_CHECKFLT_RETNULL(x,y) (x)=(y);if((x==-FLT_MAX)) return(NULL)
+#define ASSIGN_CHECKFLT_RETFLT(x,y) (x)=(y);if((x==-FLT_MAX)) return(-FLT_MAX)
 #define ASSIGN_CHECKFLT_RETINT(x,y)  (x)=(y);if((x==-FLT_MAX)) return(-1)
 #define ASSIGN_CHECKDBL_RETINT(x,y)  (x)=(y);if((x==-DBL_MAX)) return(-1)
 
