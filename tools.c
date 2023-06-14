@@ -96,6 +96,32 @@ double gaussecond(double x,double sigma,double offset)
   return(d2y);
 }
 
+
+/*######################################################*/
+/*return random number from Gaussian*/
+
+float randGauss(float sigma,float mu)
+{
+  float max=0;
+  float x=0,w=0;
+  float x1=0,x2=0;
+
+  if(RAND_MAX>0)max=(float)RAND_MAX;
+  else          max=-1.0*(float)RAND_MAX;
+
+  w=0.0;
+  do{
+    x1=2.0*(float)rand()/max-1.0;
+    x2=2.0*(float)rand()/max-1.0;
+    w=x1*x1+x2*x2;
+  }while(w>=1.0);
+  w=sqrt((-2.0*log(w))/w);
+
+  x=x1*w*sigma+mu;
+
+  return(x);
+}/*randGauss*/
+
 /*#########################################################*/
 /*return y for a lognormal*/
 

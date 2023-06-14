@@ -52,6 +52,7 @@ float floOneSwap(float);
 uint32_t u32OneSwap(uint32_t);
 int16_t *int16Swap(int16_t *,uint64_t);
 double gaussian(double,double,double);
+float randGauss(float,float);
 double logNormal(double,double,double);
 char *markChar(int,char *,char);
 unsigned char *markUchar(int,unsigned char *,unsigned char);
