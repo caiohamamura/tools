@@ -56,6 +56,8 @@ float randGauss(float,float);
 double logNormal(double,double,double);
 char *markChar(int,char *,char);
 unsigned char *markUchar(int,unsigned char *,unsigned char);
+float* markFloat(int, float*, float);
+int* markInt(int, int*, int);
 float singleMedian(float*, int);
 
 unsigned char **uchChalloc(int,char *,int);
